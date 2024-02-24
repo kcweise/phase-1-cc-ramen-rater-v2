@@ -3,7 +3,7 @@
 //Initially runs loop to get each from database. Passes the data to displayRamens function
 
 const fetchMe = ()=> {
-  //Loop for originally getting data from server.
+  //Loop for originally getting data from server passed to displayRamen for rendering.
   for (let i = 1 ; i < 6; i++)
   fetch(`http://localhost:3000/ramens/${i}`)
   .then(res =>{
