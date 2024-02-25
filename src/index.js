@@ -13,8 +13,10 @@ const fetchMe = ()=> {
     alert("No promise returned")
   }})
 .then(res => {
-  console.log(res);
-  res.forEach(ramen => displayRamens(ramen));
+  res.forEach(ramen => displayRamens(ramen))
+  return res;
+})
+.then(res => {clickRendering(res[0])
 })
 .catch(error => console.log(error))
 };
@@ -108,7 +110,7 @@ fetch(`http://localhost:3000/ramens/${databaseId}`,{
     return res.json()
     }
     else {
-      alert("No promise returned1")
+      alert("No promise returned")
     }})
   .then(res => clickRendering(res))
   .catch(error => console.log(error));
