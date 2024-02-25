@@ -1,9 +1,9 @@
 // index.js
-//See all ramen images in the "div" with id: ramen-menu (IE appendChild())
-//Initially runs loop to get each from database. Passes the data to displayRamens function
+
 let databaseId; 
 const fetchMe = ()=> {
-  //Loop for originally getting data from server passed to displayRamen for rendering.
+  //Fetch returns whole database dataset then each dataset is passed to displayRamen for rendering. 
+  //First dataset is passed to clickRendering for initial load
   fetch(`http://localhost:3000/ramens`)
   .then(res =>{
   if(res.ok){
@@ -90,6 +90,7 @@ fetch(`http://localhost:3000/ramens`,{
   .catch(error => console.log(error));
 };
 
+//Updates database based on user input and a submit button. Renders that update by passing fetch response to clickRendering
 const updateClick = (e)=> {
   e.preventDefault();
 
