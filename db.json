@@ -13,8 +13,8 @@
       "name": "Naruto Ramen",
       "restaurant": "Naruto",
       "image": "./assets/ramen/naruto.jpg",
-      "rating": 10,
-      "comment": "My absolute fave!"
+      "rating": "3",
+      "comment": "yuk"
     },
     {
       "id": "3",
@@ -37,24 +37,16 @@
       "name": "Kojiro Red Ramen",
       "restaurant": "Ramen-Ya",
       "image": "./assets/ramen/kojiro.jpg",
-      "rating": 6,
-      "comment": "Perfect for a cold night."
+      "rating": "3",
+      "comment": "yuk"
     },
     {
-      "id": "7078",
-      "name": "my Ramen",
-      "restaurant": "my house",
+      "id": "c4ee",
+      "name": "Ramen",
+      "restaurant": "My House",
       "image": "https://media.istockphoto.com/id/1472206655/photo/bowl-of-noddles.jpg?s=612x612&w=is&k=20&c=FcNr_NfILLVOEcY7sy9IvgADDcUZf563x_xTyC2gW0w=",
-      "rating": "2",
-      "comment": "2"
-    },
-    {
-      "id": "8de2",
-      "name": "",
-      "restaurant": "",
-      "image": "https://media.istockphoto.com/id/1472206655/photo/bowl-of-noddles.jpg?s=612x612&w=is&k=20&c=FcNr_NfILLVOEcY7sy9IvgADDcUZf563x_xTyC2gW0w=",
-      "rating": "",
-      "comment": ""
+      "rating": "1",
+      "comment": "no good"
     }
   ]
 }

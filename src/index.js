@@ -1,7 +1,7 @@
 // index.js
 //See all ramen images in the "div" with id: ramen-menu (IE appendChild())
 //Initially runs loop to get each from database. Passes the data to displayRamens function
-
+let databaseId; 
 const fetchMe = ()=> {
   //Loop for originally getting data from server passed to displayRamen for rendering.
   for (let i = 1 ; i < 6; i++)
@@ -34,18 +34,22 @@ const handleClick = (e) => {
 
 //Takes the fetched data from the image click and renders it in the html 
 const clickRendering = (res)=> {
-  
+    
+   
   const imgDetail = document.querySelector(".detail-image");
   const hTwoRamenName = document.querySelector(".name");
   const hThreeRestName = document.querySelector(".restaurant");
   const spanRating = document.getElementById('rating-display');
   const pcomment = document.getElementById('comment-display');
-
+  
+  //imgId.setAttribute("id", `${res.id}`)
+  imgDetail.id = res.id
   imgDetail.src = res.image;
   hTwoRamenName.textContent = res.name;
   hThreeRestName.textContent = res.restaurant;
   spanRating.textContent = res.rating;
   pcomment.textContent = res.comment;
+  databaseId = res.id  
   
 };
 
@@ -84,16 +88,48 @@ fetch(`http://localhost:3000/ramens`,{
   .catch(error => console.log(error));
 };
 
+const updateClick = (e)=> {
+  e.preventDefault();
+
+  let updateRating = document.getElementById('edit-rating').value;
+  let updateComment = document.getElementById('edit-comment').value;
+
+const updateInput = {rating: updateRating, comment: updateComment}
+
+fetch(`http://localhost:3000/ramens/${databaseId}`,{
+  method:'PATCH',
+  headers:{
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(updateInput),
+})
+  .then(res =>{
+    if(res.ok){
+    return res.json()
+    }
+    else {
+      alert("No promise returned1")
+    }})
+  .then(res => clickRendering(res))
+  .catch(error => console.log(error));
+  };
+
+//Update Listener for the update form, triggered listener passes the event to updateClick
+const addUpdateListener = () => {
+  const updates = document.getElementById(`edit-ramen`)
+  updates.addEventListener('submit', (e) => updateClick(e))
+};
+
 //Submit listener for the form, triggered listener passes the event to submitClick
 const addSubmitListener = () => {
   const inputs = document.getElementById(`new-ramen`)
-  inputs.addEventListener('submit', (e) =>{submitClick(e);})
+  inputs.addEventListener('submit', (e) =>submitClick(e))
 };
 
 //Click listener for the images, triggered listener passes the event to handleClick
 const addClickListener = () => {
   const image = document.getElementById(`ramen-menu`)
-  image.addEventListener('click', (e) =>{handleClick(e);})
+  image.addEventListener('click', (e) =>handleClick(e))
 };
 
 //Renders images in the DOM
@@ -114,6 +150,7 @@ const main = () => {
   fetchMe();
   addSubmitListener();
   addClickListener();
+  addUpdateListener();
 };
 
 main()
