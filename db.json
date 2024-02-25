@@ -47,6 +47,14 @@
       "image": "https://media.istockphoto.com/id/1472206655/photo/bowl-of-noddles.jpg?s=612x612&w=is&k=20&c=FcNr_NfILLVOEcY7sy9IvgADDcUZf563x_xTyC2gW0w=",
       "rating": "1",
       "comment": "no good"
+    },
+    {
+      "id": "3527",
+      "name": "Another for Testing Same Picture",
+      "restaurant": "My House",
+      "image": "https://media.istockphoto.com/id/1472206655/photo/bowl-of-noddles.jpg?s=612x612&w=is&k=20&c=FcNr_NfILLVOEcY7sy9IvgADDcUZf563x_xTyC2gW0w=",
+      "rating": "1",
+      "comment": "updating rating"
     }
   ]
 }

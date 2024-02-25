@@ -4,8 +4,7 @@
 let databaseId; 
 const fetchMe = ()=> {
   //Loop for originally getting data from server passed to displayRamen for rendering.
-  for (let i = 1 ; i < 6; i++)
-  fetch(`http://localhost:3000/ramens/${i}`)
+  fetch(`http://localhost:3000/ramens`)
   .then(res =>{
   if(res.ok){
   return res.json()
@@ -13,7 +12,10 @@ const fetchMe = ()=> {
   else {
     alert("No promise returned")
   }})
-.then(res => displayRamens(res))
+.then(res => {
+  console.log(res);
+  res.forEach(ramen => displayRamens(ramen));
+})
 .catch(error => console.log(error))
 };
 
@@ -35,14 +37,12 @@ const handleClick = (e) => {
 //Takes the fetched data from the image click and renders it in the html 
 const clickRendering = (res)=> {
     
-   
   const imgDetail = document.querySelector(".detail-image");
   const hTwoRamenName = document.querySelector(".name");
   const hThreeRestName = document.querySelector(".restaurant");
   const spanRating = document.getElementById('rating-display');
   const pcomment = document.getElementById('comment-display');
   
-  //imgId.setAttribute("id", `${res.id}`)
   imgDetail.id = res.id
   imgDetail.src = res.image;
   hTwoRamenName.textContent = res.name;
